@@ -1,0 +1,17 @@
+{
+    "name": "TD.SceneGlue",
+    "rootNamespace": "TD.SceneGlue",
+    "references": [
+        "TD.Data",
+        "TD.Rules"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
