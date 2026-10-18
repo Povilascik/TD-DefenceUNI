@@ -933,6 +933,8 @@ MonoBehaviour:
   levelData: {fileID: 11400000, guid: 090c4f7a283d9504da04771da2c2b564, type: 2}
   levelPath: {fileID: 521517482}
   pathView: {fileID: 521517483}
+  enemyPrefab: {fileID: 7690529799191001913, guid: fae758b3f34f2d14eab27b81ec793b9e, type: 3}
+  testEnemyData: {fileID: 11400000, guid: 0c048635f19ca1d4fb41cef3f825022d, type: 2}
 --- !u!1 &2043726319
 GameObject:
   m_ObjectHideFlags: 0
