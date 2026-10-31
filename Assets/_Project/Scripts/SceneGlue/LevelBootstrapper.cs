@@ -10,8 +10,11 @@ namespace TD.SceneGlue
         [SerializeField] private LevelData levelData;
         [SerializeField] private LevelPath levelPath;
         [SerializeField] private PathLineView pathView;
-        [SerializeField] private Enemy enemyPrefab;
-        [SerializeField] private EnemyData testEnemyData; // temp test
+        [SerializeField] EnemySpawner enemySpawner;
+        [SerializeField] EnemyData testEnemyData;
+        // Replaced by WaveManager
+        [SerializeField, Min(0.1f)] private float testSpawnInterval = 1f;
+        private float spawnTimer = 0f;
         private WaypointPath path;
         private bool HasAllReferences()
         {
@@ -31,15 +34,16 @@ namespace TD.SceneGlue
                 Debug.LogError($"Missing: {nameof(pathView)}", this);
                 ready = false;
             }
-            if (enemyPrefab == null)
+            if (enemySpawner == null)
             {
-                Debug.LogError($"Missing: {nameof(enemyPrefab)}", this);
+                Debug.LogError($"Missing: {nameof(enemySpawner)}", this);
                 ready = false;
             }
             if (testEnemyData == null)
             {
-                Debug.LogError($"Missing: {nameof(testEnemyData)}", this);
                 ready = false;
+                Debug.LogError($"Missing: {nameof(testEnemyData)}", this);
+
             }
             return ready;
         }
@@ -54,38 +58,35 @@ namespace TD.SceneGlue
             path = levelPath.BuildPath();
             pathView.Initialize(path);
 
-            SpawnTestEnemy();
-
             Debug.Log(levelData.DisplayName + " - path " + path.TotalLength + " units, " + levelData.StartingCash + " cash, " + levelData.StartingLives + " lives");
-        }
-        private void SpawnTestEnemy()
-        {
-            // enemyPrefab.Initialize(testEnemyData, path);
-            Enemy enemy = Instantiate(enemyPrefab);
-            enemy.Died += HandleEnemyDied;
-            enemy.ReachedEnd += HandleEnemyReachedEnd;
 
-            enemy.Initialize(testEnemyData, path);
-
-            Debug.Log("Spawned " + enemy.Data.DisplayName + " " + enemy.Data.LivesCost + " Lives cost " + enemy.Data.Speed + " Speed " + enemy.Data.Reward + " Reward");
+            enemySpawner.Initialize(path);
+            enemySpawner.EnemyDied += HandleEnemyDied;
+            enemySpawner.EnemyLeaked += HandleEnemyReachedEnd;
         }
         private void HandleEnemyDied(Enemy enemy)
         {
             Debug.Log(enemy.Data.DisplayName + " popped (+" + enemy.Data.Reward + " cash)");
-            Despawn(enemy);
         }
         private void HandleEnemyReachedEnd(Enemy enemy)
         {
             Debug.Log(enemy.Data.DisplayName + " reached the end(-" + enemy.Data.LivesCost + " lives)");
-            Despawn(enemy);
 
         }
-        private void Despawn(Enemy enemy)
-        {
-            enemy.Died -= HandleEnemyDied;
-            enemy.ReachedEnd -= HandleEnemyReachedEnd;
+        private void Update() {
+            spawnTimer -= Time.deltaTime;
+            if (spawnTimer > 0f) return;
+            
+            enemySpawner.Spawn(testEnemyData);
+            spawnTimer = testSpawnInterval;
+        }
 
-            Destroy(enemy.gameObject);
+        private void OnDestroy() {
+            if (enemySpawner == null) return;
+
+            enemySpawner.EnemyDied -= HandleEnemyDied;
+            enemySpawner.EnemyLeaked -= HandleEnemyReachedEnd;
+            
         }
     }
 }
