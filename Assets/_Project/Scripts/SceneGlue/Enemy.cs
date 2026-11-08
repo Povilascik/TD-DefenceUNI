@@ -10,6 +10,7 @@ namespace TD.SceneGlue
         [SerializeField] private EnemyHealth enemyHealth;
         [SerializeField] private EnemyMovement enemyMovement;
         [SerializeField] private EnemyView enemyView;
+        public float Distance => enemyMovement.Distance;
         private void Reset()
         {
             enemyHealth = GetComponent<EnemyHealth>();

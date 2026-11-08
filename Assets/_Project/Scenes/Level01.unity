@@ -982,6 +982,8 @@ MonoBehaviour:
   enemySpawner: {fileID: 248188838}
   testEnemyData: {fileID: 11400000, guid: 0c048635f19ca1d4fb41cef3f825022d, type: 2}
   testSpawnInterval: 1
+  placedTower: {fileID: 3161524309181388618}
+  placedTowerData: {fileID: 11400000, guid: b1e0d644d8ace9b4f89e0706e1f34bd2, type: 2}
 --- !u!1 &2043726319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,6 +1015,78 @@ Transform:
   m_Children: []
   m_Father: {fileID: 521517480}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3161524309181388617
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3191389762729588851, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5093765801582622779, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_Name
+      value: DartMonkey
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933968988111619551, guid: e12d1febd91209f459678058e3d93045, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e12d1febd91209f459678058e3d93045, type: 3}
+--- !u!114 &3161524309181388618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6098399956891250596, guid: e12d1febd91209f459678058e3d93045, type: 3}
+  m_PrefabInstance: {fileID: 3161524309181388617}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d19f213d2bc7074881da7d5d6b77525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: TD.SceneGlue::TD.SceneGlue.Tower
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1023,3 +1097,4 @@ SceneRoots:
   - {fileID: 626181362}
   - {fileID: 814636203}
   - {fileID: 248188839}
+  - {fileID: 3161524309181388617}

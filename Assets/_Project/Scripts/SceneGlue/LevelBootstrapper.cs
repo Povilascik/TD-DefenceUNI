@@ -14,6 +14,8 @@ namespace TD.SceneGlue
         [SerializeField] EnemyData testEnemyData;
         // Replaced by WaveManager
         [SerializeField, Min(0.1f)] private float testSpawnInterval = 1f;
+        [SerializeField] private Tower placedTower;
+        [SerializeField] private TowerData placedTowerData;
         private float spawnTimer = 0f;
         private WaypointPath path;
         private bool HasAllReferences()
@@ -45,6 +47,16 @@ namespace TD.SceneGlue
                 Debug.LogError($"Missing: {nameof(testEnemyData)}", this);
 
             }
+            if (placedTower == null)
+            {
+                ready = false;
+                Debug.LogError($"Missing: {nameof(placedTower)}", this);
+            }
+            if (placedTowerData == null)
+            {
+                ready = false;
+                Debug.LogError($"Missing: {nameof(placedTowerData)}", this);
+            }
             return ready;
         }
         void Awake()
@@ -57,6 +69,8 @@ namespace TD.SceneGlue
 
             path = levelPath.BuildPath();
             pathView.Initialize(path);
+
+            placedTower.Initialize(placedTowerData);
 
             Debug.Log(levelData.DisplayName + " - path " + path.TotalLength + " units, " + levelData.StartingCash + " cash, " + levelData.StartingLives + " lives");
 
